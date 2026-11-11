@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚨 Рятівники Презентації: Майстер Слайдів 5 Клас! 🚀</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            purple: '#8B5CF6',
+                            pink: '#EC4899',
+                            yellow: '#F59E0B',
+                            cyan: '#06B6D4',
+                            green: '#10B981',
+                            dark: '#1E1B4B'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Nunito', 'sans-serif'],
+                        comfortaa: ['Comfortaa', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #2e1065 0%, #4c1d95 50%, #701a75 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(16px);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            color: #1e1b4b;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Slide animations simulation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes bounceAnim {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px #ec4899, 0 0 30px #8b5cf6; }
+            50% { box-shadow: 0 0 25px #f59e0b, 0 0 50px #10b981; }
+        }
+
+        .animate-fadeIn { animation: fadeIn 0.4s ease-out forwards; }
+        .animate-bounce-custom { animation: bounceAnim 2s infinite ease-in-out; }
+        .animate-spin-slow { animation: spinSlow 12s linear infinite; }
+        .glow-effect { animation: pulseGlow 3s infinite ease-in-out; }
+
+        .slide-transition-fade { transition: all 0.5s ease-in-out; }
+        .slide-transition-zoom { animation: zoomIn 0.5s ease-out; }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ec4899;
+            border-radius: 10px;
+        }
+
+        /* Certificate Print CSS */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #certificate-modal, #certificate-modal * {
+                visibility: visible;
+            }
+            #certificate-modal {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: white !important;
+                color: black !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen p-2 md:p-6 overflow-x-hidden">
+
+    <!-- Header Navigation Bar -->
+    <header class="glass-panel rounded-2xl p-4 mb-4 flex flex-wrap justify-between items-center gap-4 border-b-4 border-pink-500">
+        <div class="flex items-center gap-3">
+            <span class="text-4xl animate-bounce-custom">🚀</span>
+            <div>
+                <h1 class="font-comfortaa text-xl md:text-2xl font-black text-yellow-300 drop-shadow-md">
+                    РЯТІВНИКИ ПРЕЗЕНТАЦІЇ!
+                </h1>
+                <p class="text-xs md:text-sm text-pink-200 font-bold">Місія: Відновити слайди фестивалю 🎉</p>
+            </div>
+        </div>
+
+        <!-- Progress Tracker -->
+        <div class="flex items-center gap-2 bg-indigo-950/80 px-4 py-2 rounded-full border border-pink-400/40">
+            <span class="text-xs md:text-sm font-extrabold text-cyan-300">ПРОГРЕС МІСІЇ:</span>
+            <div class="flex gap-1.5" id="progress-dots">
+                <div class="w-4 h-4 rounded-full bg-yellow-400 border-2 border-white animate-pulse" id="dot-1" title="Місія 1"></div>
+                <div class="w-4 h-4 rounded-full bg-gray-600 border-2 border-gray-400" id="dot-2" title="Місія 2"></div>
+                <div class="w-4 h-4 rounded-full bg-gray-600 border-2 border-gray-400" id="dot-3" title="Місія 3"></div>
+                <div class="w-4 h-4 rounded-full bg-gray-600 border-2 border-gray-400" id="dot-4" title="Місія 4"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container Grid -->
+    <main class="flex-grow grid grid-cols-1 lg:grid-cols-12 gap-6 items-start max-w-7xl mx-auto w-full">
+
+        <!-- LEFT PANEL: Task & Theory (5 Cols) -->
+        <section class="lg:col-span-5 flex flex-col gap-4">
+            
+            <!-- Story / Problem Banner -->
+            <div class="glass-panel p-4 rounded-2xl bg-gradient-to-r from-red-600/40 to-pink-600/40 border-2 border-red-400">
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="text-3xl">🚨</span>
+                    <h2 class="font-comfortaa text-lg font-bold text-yellow-300">АВАРІЙНА СИТУАЦІЯ!</h2>
+                </div>
+                <p id="story-text" class="text-xs md:text-sm text-white/90 leading-relaxed font-semibold">
+                    До початку шкільного "Фестивалю Талантів" лишилося 15 хвилин! Головний слайд вирушив у хаос: колір фону злився з текстом, шрифт мікроскопічний, а анімації зникли! Допоможи відновити презентацію! 🎨✨
+                </p>
+            </div>
+
+            <!-- Theory Book Card -->
+            <div class="glass-card p-5 border-4 border-yellow-400 relative overflow-hidden">
+                <div class="absolute -right-6 -bottom-6 text-7xl opacity-10 pointer-events-none">📚</div>
+                <div class="flex items-center justify-between border-b-2 border-purple-200 pb-2 mb-3">
+                    <h3 class="font-comfortaa text-lg font-black text-purple-900 flex items-center gap-2">
+                        <span>📖</span> ТЕОРЕТИЧНИЙ ШПАРГАЛКА
+                    </h3>
+                    <span class="bg-purple-100 text-purple-800 text-xs px-2.5 py-1 rounded-full font-extrabold uppercase" id="mission-badge">Місія 1 з 4</span>
+                </div>
+                
+                <!-- Dynamic Theory Content -->
+                <div id="theory-content" class="text-xs md:text-sm space-y-2 text-slate-800 leading-snug">
+                    <!-- Injected via JS -->
+                </div>
+            </div>
+
+            <!-- Task Objective Card -->
+            <div class="glass-panel p-5 rounded-2xl bg-indigo-900/90 border-2 border-cyan-400 glow-effect">
+                <h3 class="font-comfortaa text-base font-bold text-cyan-300 mb-2 flex items-center gap-2">
+                    <span>🎯</span> ЗАВДАННЯ МІСІЇ:
+                </h3>
+                <p id="task-instruction" class="text-xs md:text-sm font-bold text-yellow-200 mb-4">
+                    <!-- Injected via JS -->
+                </p>
+
+                <div class="flex justify-between items-center gap-2">
+                    <button onclick="checkTask()" class="w-full py-3 bg-gradient-to-r from-green-400 to-emerald-600 hover:from-green-500 hover:to-emerald-700 text-slate-900 font-black rounded-xl shadow-lg transform active:scale-95 transition flex items-center justify-center gap-2 text-base">
+                        <span>✅</span> ПЕРЕВІРИТИ СЛАЙД!
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- RIGHT PANEL: PowerPoint Simulation Environment (7 Cols) -->
+        <section class="lg:col-span-7 flex flex-col gap-3 w-full">
+            
+            <!-- Editor Toolbar simulation -->
+            <div class="glass-panel rounded-2xl p-3 border-2 border-purple-400/50 bg-slate-900/80">
+                <div class="text-xs font-bold text-purple-300 mb-2 flex items-center justify-between border-b border-white/10 pb-1">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-sliders text-pink-400"></i> ПАНЕЛЬ ІНСТРУМЕНТІВ POWERPOINT</span>
+                    <span class="text-yellow-400" id="current-slide-num">Слайд 1/4</span>
+                </div>
+
+                <!-- Control Panels depending on Mission -->
+                <div id="editor-controls" class="space-y-3">
+                    <!-- Dynamic Controls injected via JS -->
+                </div>
+            </div>
+
+            <!-- Virtual Canvas Slide Container -->
+            <div class="w-full aspect-[16/9] relative rounded-2xl border-4 border-slate-700 bg-slate-950 shadow-2xl overflow-hidden flex flex-col justify-center items-center" id="slide-viewport">
+                
+                <!-- The Slide Area (16:9 ratio simulation) -->
+                <div id="ppt-slide" class="w-full h-full relative transition-all duration-500 p-6 flex flex-col justify-between items-center text-center overflow-hidden bg-slate-900">
+                    
+                    <!-- Title Area -->
+                    <div id="slide-title-box" class="w-full transition-all duration-300">
+                        <h2 id="slide-title" class="font-bold text-slate-400 text-lg transition-all">
+                            [Неналаштований заголовок]
+                        </h2>
+                    </div>
+
+                    <!-- Main Content Area -->
+                    <div id="slide-content-box" class="w-full flex-grow flex flex-col items-center justify-center relative transition-all duration-300 gap-2 my-2">
+                        <p id="slide-text" class="text-slate-500 text-sm transition-all max-w-md">
+                            [Введіть текст...]
+                        </p>
+                        <!-- Dynamic Shape Container -->
+                        <div id="slide-shape-container" class="transition-all duration-300"></div>
+                    </div>
+
+                    <!-- Footer / Author / Credit Area -->
+                    <div id="slide-footer" class="w-full flex justify-between items-center text-[10px] text-slate-400 border-t border-slate-700/50 pt-2">
+                        <span id="slide-author">Автор: Шкільна Команда 🏫</span>
+                        <span id="slide-source">Джерело: Шкільний архів 📚</span>
+                    </div>
+
+                    <!-- Animation Preview Badge -->
+                    <div id="anim-badge" class="hidden absolute top-2 right-2 bg-yellow-400 text-slate-950 font-black text-[10px] px-2 py-1 rounded-md shadow-md animate-bounce">
+                        🎬 <span id="anim-name">Анімація: Немає</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Slide Navigation thumbnails -->
+            <div class="flex gap-2 justify-center items-center mt-1">
+                <button onclick="setMission(1)" class="px-3 py-1.5 rounded-lg font-bold text-xs bg-purple-600/50 border border-purple-400 text-white hover:bg-purple-600 active:scale-95 transition" id="thumb-1">🖼️ 1. Дизайн</button>
+                <button onclick="setMission(2)" class="px-3 py-1.5 rounded-lg font-bold text-xs bg-slate-800 border border-slate-700 text-gray-400 hover:bg-purple-600 active:scale-95 transition opacity-50" id="thumb-2" disabled>✍️ 2. Текст</button>
+                <button onclick="setMission(3)" class="px-3 py-1.5 rounded-lg font-bold text-xs bg-slate-800 border border-slate-700 text-gray-400 hover:bg-purple-600 active:scale-95 transition opacity-50" id="thumb-3" disabled>🎨 3. Фігури</button>
+                <button onclick="setMission(4)" class="px-3 py-1.5 rounded-lg font-bold text-xs bg-slate-800 border border-slate-700 text-gray-400 hover:bg-purple-600 active:scale-95 transition opacity-50" id="thumb-4" disabled>🎬 4. Ефекти</button>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Modal Notification Dialog -->
+    <div id="feedback-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+        <div class="glass-card max-w-md w-full p-6 text-center border-4 border-yellow-400 animate-fadeIn relative">
+            <div id="modal-icon" class="text-6xl mb-3">🎉</div>
+            <h3 id="modal-title" class="font-comfortaa text-2xl font-black text-purple-900 mb-2">ЧУДОВО!</h3>
+            <p id="modal-msg" class="text-slate-700 font-bold text-sm mb-6 leading-relaxed">
+                Ти успішно виконал(а) завдання цієї місії!
+            </p>
+            <button onclick="closeModal()" id="modal-btn" class="w-full py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-black text-lg rounded-xl shadow-lg hover:brightness-110 active:scale-95 transition">
+                ПРОДОВЖИТИ 🚀
+            </button>
+        </div>
+    </div>
+
+    <!-- CERTIFICATE GENERATOR MODAL -->
+    <div id="certificate-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md hidden items-center justify-center p-2 md:p-6 z-50 overflow-y-auto">
+        <div class="max-w-3xl w-full bg-white text-slate-900 p-6 md:p-10 rounded-3xl border-8 border-yellow-400 shadow-2xl relative text-center flex flex-col justify-between my-auto">
+            
+            <!-- Close Button -->
+            <button onclick="closeCertificate()" class="no-print absolute top-4 right-4 w-10 h-10 bg-slate-200 hover:bg-red-500 hover:text-white rounded-full font-black text-xl transition flex items-center justify-center">✕</button>
+
+            <!-- Certificate Header -->
+            <div>
+                <div class="text-5xl md:text-6xl mb-2">🏆✨📜</div>
+                <h2 class="font-comfortaa text-2xl md:text-4xl font-black text-purple-900 uppercase tracking-wide">
+                    СЕРТИФІКАТ МАЙСТРА
+                </h2>
+                <p class="text-pink-600 font-black text-base md:text-xl mt-1 uppercase tracking-wider">
+                    З КОМП'ЮТЕРНИХ ПРЕЗЕНТАЦІЙ
+                </p>
+            </div>
+
+            <!-- Certificate Body -->
+            <div class="my-6 border-y-4 border-dashed border-yellow-400 py-6">
+                <p class="text-slate-600 font-bold text-sm md:text-base mb-2">Цей сертифікат засвідчує, що рятівник/рятівниця слайдів:</p>
+                
+                <!-- Student Name Input -->
+                <div class="my-3 no-print">
+                    <input type="text" id="student-name-input" placeholder="Введіть ваше Прізвище та Ім'я" class="w-full max-w-md px-4 py-3 border-2 border-purple-500 rounded-xl text-center font-black text-lg md:text-xl text-purple-900 focus:outline-none focus:ring-4 focus:ring-pink-300" oninput="updateCertName()">
+                </div>
+
+                <div id="cert-printed-name" class="font-comfortaa text-2xl md:text-4xl font-black text-indigo-950 underline decoration-pink-500 decoration-4 my-2">
+                    [Ваше Прізвище та Ім'я]
+                </div>
+
+                <p class="text-slate-700 font-semibold text-xs md:text-sm max-w-lg mx-auto leading-relaxed mt-4">
+                    Успішно подолав(ла) усі 4 місії порятунку шкільної презентації! Оволодів(ла) знаннями щодо вимог до слайдів, роботи з текстовими блоками WordArt, форматування графіки та налаштування анімацій! 🚀✨
+                </p>
+            </div>
+
+            <!-- Certificate Footer with Teacher Name -->
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-bold text-slate-500 pt-2">
+                <div class="text-center sm:text-left">
+                    <p>📅 Дата: <span id="cert-date">11.11.2026</span></p>
+                    <p>🏫 Курс: Інформатика 5 клас</p>
+                </div>
+                <div class="text-center sm:text-right">
+                    <p class="text-purple-900 font-black text-sm">Учитель: <span class="text-pink-600">Тетяна ЯСІНСЬКА</span></p>
+                    <p>Статус: МІСІЯ ВИКОНАНА ✅</p>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="mt-8 flex flex-wrap gap-4 justify-center no-print">
+                <button onclick="window.print()" class="px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-black rounded-xl shadow-lg hover:brightness-110 active:scale-95 transition flex items-center gap-2">
+                    🖨️ РОЗДРУКУВАТИ / ЗБЕРЕГТИ PDF
+                </button>
+                <button onclick="closeCertificate()" class="px-6 py-3 bg-slate-700 text-white font-black rounded-xl shadow-lg hover:bg-slate-800 active:scale-95 transition">
+                    ❌ ЗАКРИТИ
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Javascript Logic Core -->
+    <script>
+        // State Management
+        let currentMission = 1;
+        let completedMissions = [false, false, false, false];
+
+        // User Slide State
+        let slideState = {
+            // Mission 1
+            layout: 'title-body', // 'empty', 'title-only', 'title-body'
+            bgTheme: 'dark', // 'dark', 'light', 'bright'
+            fontSize: '14', // '14', '24', '36'
+            contrastColor: 'slate-600', // 'slate-600', 'yellow-300', 'pink-400'
+            // Mission 2
+            titleText: 'ШКІЛЬНИЙ ФЕСТИВАЛЬ ТАЛАНТІВ',
+            wordArtStyle: 'none', // 'none', 'neon-pink', 'gold-3d'
+            textAlign: 'left', // 'left', 'center', 'right'
+            // Mission 3
+            shapeType: 'none', // 'none', 'star', 'heart', 'sun'
+            shapeFill: 'bg-purple-500', 
+            shapeScale: 1, 
+            // Mission 4
+            animType: 'none', // 'none', 'fade', 'bounce', 'zoom'
+            transitionType: 'none' // 'none', 'fade', 'zoom'
+        };
+
+        // Mission Definitions
+        const missionData = {
+            1: {
+                badge: "Місія 1 з 4: Вимоги та Макети",
+                story: "О ні! Перший слайд виглядає жахливо! Текст дрібний, фон темний і похмурий, а елементи змішані. Нам потрібен зручний макет та чіткі контрастні кольори! 🚨",
+                theory: `
+                    <ul class="space-y-1.5 list-disc pl-4 font-semibold">
+                        <li><strong>Макет (Розмітка):</strong> Схема розташування заголовків та тексту (напр. <em>"Титульний слайд"</em>, <em>"Назва та вміст"</em>) 📐</li>
+                        <li><strong>Розмір шрифту:</strong> Для комфортного читання з екрану текст повинен бути не менше <strong>24pt</strong>! 🔤</li>
+                        <li><strong>Контраст:</strong> Текст має бути чітко видно на фоні (темний текст на світлому фоні або навпаки) 🎨</li>
+                        <li><strong>Рядки:</strong> На слайді має бути не більше <strong>6–8 рядків</strong> короткого тексту 📝</li>
+                    </ul>
+                `,
+                task: "Налаштуй слайд: вибери макет 'Назва та вміст', обери контрастний жовтий колір тексту та зроби розмір шрифту 24pt або 36pt! 🚀",
+                controls: `
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-300 mb-1">📐 Вибери макет:</label>
+                            <select id="ctrl-layout" onchange="updateSlideFromControls()" class="w-full bg-slate-800 text-white text-xs p-2 rounded-lg border border-purple-400 focus:outline-none">
+                                <option value="empty">Пустий слайд</option>
+                                <option value="title-only">Лише заголовок</option>
+                                <option value="title-body" selected>Назва та вміст</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-300 mb-1">🎨 Колір тексту/Фон:</label>
+                            <select id="ctrl-contrast" onchange="updateSlideFromControls()" class="w-full bg-slate-800 text-white text-xs p-2 rounded-lg border border-purple-400 focus:outline-none">
+                                <option value="slate-600">Сірий на темному (Незручно ❌)</option>
+                                <option value="yellow-300" selected>Яскраво-жовтий на темному (Контраст ✅)</option>
+                                <option value="pink-400">Рожевий неоновий (Контраст ✅)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-300 mb-1">🔤 Розмір шрифту:</label>
+                            <select id="ctrl-fontsize" onchange="updateSlideFromControls()" class="w-full bg-slate-800 text-white text-xs p-2 rounded-lg border border-purple-400 focus:outline-none">
+                                <option value="14">14pt (Занадто дрібний ❌)</option>
+                                <option value="24">24pt (Норма ✅)</option>
+                                <option value="36">36pt (Великий заголовок ✅)</option>
+                            </select>
+                        </div>
+                    </div>
+                `
+            },
+            2: {
+                badge: "Місія 2 з 4: Текст та WordArt",
+                story: "Звичайний заголовок виглядає нудно для свята. Нам потрібні вирівнювання по центру та яскравий художній стиль WordArt! ✍️✨",
+                theory: `
+                    <ul class="space-y-1.5 list-disc pl-4 font-semibold">
+                        <li><strong>Текстові об'єкти:</strong> Написи на слайдах створюються у спеціальних рамках (полях) 📦</li>
+                        <li><strong>Об'єкт WordArt:</strong> Текст з художнім оформленням (градієнти, тіні, об'єм, сяйво) для привернення уваги! 🌟</li>
+                        <li><strong>Вирівнювання абзацу:</strong> Положення тексту відносно меж (за лівим краєм, <em>по центру</em>, за правим краєм) 📐</li>
+                    </ul>
+                `,
+                task: "Застосуй до заголовка стиль WordArt ('Неон' або 'Золото 3D') та вирівняй текст 'По центру'! 🎯",
+                controls: `
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-300 mb-1">✍️ Текст заголовка:</label>
+                            <input type="text" id="ctrl-title-text" value="ФЕСТИВАЛЬ ТАЛАНТІВ 2026" oninput="updateSlideFromControls()" class="w-full bg-slate-800 text-white text-xs p-2 rounded-lg border border-purple-400 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-300 mb-1">✨ Стиль WordArt:</label>
+                            <select id="ctrl-wordart" onchange="updateSlideFromControls()" class="w-full bg-slate-800 text-white text-xs p-2 rounded-lg border border-purple-400 focus:outline-none">
+                                <option value="none">Без стилю (Звичайний)</option>
+                                <option value="neon-pink">Рожевий Неон ✨</option>
+                                <option value="gold-3d">Золотий Об'єм 3D 🏆</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-300 mb-1">📐 Вирівнювання:</label>
+                            <select id="ctrl-align" onchange="updateSlideFromControls()" class="w-full bg-slate-800 text-white text-xs p-2 rounded-lg border border-purple-400 focus:outline-none">
+                                <option value="left">По лівому краю ⬅️</option>
+                                <option value="center" selected>По центру ↔️</option>
+                                <option value="right">По правому краю ➡️</option>
+                            </select>
+                        </div>
+                    </div>
+                `
+            },
+            3: {
+                badge: "Місія 3 з 4: Графічні об'єкти",
+                story: "Слайду бракує ілюстрацій! Додаймо святкову фігуру (зірку або сонце), розфарбуємо її та правильно масштабуємо! 🎨⭐",
+                theory: `
+                    <ul class="space-y-1.5 list-disc pl-4 font-semibold">
+                        <li><strong>Графічні об'єкти:</strong> Зображення, фігури, піктограми та 3D-моделі роблять слайд цікавим! 🖼️</li>
+                        <li><strong>Масштабування:</strong> Щоб не спотворити малюнок, тягни лише за <strong>кутові маркери</strong>! 📐</li>
+                        <li><strong>Форматування фігур:</strong> Зміна кольору <em>заливки</em> та товщини <em>контуру</em> 🎨</li>
+                    </ul>
+                `,
+                task: "Встав графічну фігуру 'Зірка' або 'Сонце', вибери для неї яскраве забарвлення та збільш масштаб! 🌟",
+                controls: `
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-300 mb-1">⭐ Вибери фігуру:</label>
+                            <select id="ctrl-shape" onchange="updateSlideFromControls()" class="w-full bg-slate-800 text-white text-xs p-2 rounded-lg border border-purple-400 focus:outline-none">
+                                <option value="none">Без фігури</option>
+                                <option value="star">Зірка 🌟</option>
+                                <option value="sun">Сонце ☀️</option>
+                                <option value="heart">Серце ❤️</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-300 mb-1">🎨 Заливка фігури:</label>
+                            <select id="ctrl-shape-fill" onchange="updateSlideFromControls()" class="w-full bg-slate-800 text-white text-xs p-2 rounded-lg border border-purple-400 focus:outline-none">
+                                <option value="bg-yellow-400">Жовта сонячна 💛</option>
+                                <option value="bg-pink-500">Яскраво-рожева 💖</option>
+                                <option value="bg-cyan-400">Блакитна неонова 💙</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-300 mb-1">📐 Розмір (кутовий маркер):</label>
+                            <select id="ctrl-shape-scale" onchange="updateSlideFromControls()" class="w-full bg-slate-800 text-white text-xs p-2 rounded-lg border border-purple-400 focus:outline-none">
+                                <option value="0.8">Маленький (0.8x)</option>
+                                <option value="1.2" selected>Великий пропорційний (1.2x) ✅</option>
+                            </select>
+                        </div>
+                    </div>
+                `
+            },
+            4: {
+                badge: "Місія 4 з 4: Анімації та Переходи",
+                story: "Фінальний крок! Надаймо слайду життя за допомогою доцільної анімації об'єктів та плавного переходу слайдів! 🎬✨",
+                theory: `
+                    <ul class="space-y-1.5 list-disc pl-4 font-semibold">
+                        <li><strong>Анімація об'єктів:</strong> Ефекти появу/руху окремого тексту чи малюнка на слайді 🎭</li>
+                        <li><strong>Переходи слайдів:</strong> Ефекти зміни одного слайда іншим під час показу 🎞️</li>
+                        <li><strong>Правило доцільності:</strong> Анімація не повинна відволікати слухачів від змісту виступу! 💡</li>
+                    </ul>
+                `,
+                task: "Обери доцільну анімацію для об'єкта ('Поява' або 'Масштаб') та встанови плавний перехід слайда! 🎬",
+                controls: `
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-300 mb-1">🎬 Анімація об'єкта (Заголовок):</label>
+                            <select id="ctrl-anim" onchange="updateSlideFromControls()" class="w-full bg-slate-800 text-white text-xs p-2 rounded-lg border border-purple-400 focus:outline-none">
+                                <option value="none">Без анімації</option>
+                                <option value="bounce">Стрибок (Bounce) 🪀</option>
+                                <option value="zoom">Поява / Масштабування (Zoom) ✨</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-300 mb-1">🎞️ Перехід слайдів:</label>
+                            <select id="ctrl-transition" onchange="updateSlideFromControls()" class="w-full bg-slate-800 text-white text-xs p-2 rounded-lg border border-purple-400 focus:outline-none">
+                                <option value="none">Без переходу</option>
+                                <option value="fade">Плавне розчинення (Fade) 🌌</option>
+                                <option value="zoom">Масштабування слайда 🔎</option>
+                            </select>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        // Initialize Simulator
+        window.onload = function() {
+            setMission(1);
+            const today = new Date();
+            document.getElementById('cert-date').innerText = today.toLocaleDateString('uk-UA');
+        };
+
+        // Switch active mission
+        function setMission(num) {
+            currentMission = num;
+            const data = missionData[num];
+
+            // Update Left Cards
+            document.getElementById('mission-badge').innerText = data.badge;
+            document.getElementById('story-text').innerText = data.story;
+            document.getElementById('theory-content').innerHTML = data.theory;
+            document.getElementById('task-instruction').innerText = data.task;
+            document.getElementById('editor-controls').innerHTML = data.controls;
+            document.getElementById('current-slide-num').innerText = `Слайд ${num}/4`;
+
+            // Update Thumbnails highlight
+            for (let i = 1; i <= 4; i++) {
+                const btn = document.getElementById(`thumb-${i}`);
+                if (i === num) {
+                    btn.className = "px-3 py-1.5 rounded-lg font-bold text-xs bg-purple-600 border-2 border-yellow-400 text-white shadow-lg active:scale-95 transition";
+                } else if (completedMissions[i - 1]) {
+                    btn.className = "px-3 py-1.5 rounded-lg font-bold text-xs bg-emerald-700 border border-emerald-400 text-white hover:bg-emerald-600 active:scale-95 transition";
+                } else {
+                    btn.className = "px-3 py-1.5 rounded-lg font-bold text-xs bg-slate-800 border border-slate-700 text-gray-400 opacity-60 cursor-not-allowed";
+                }
+            }
+
+            // Sync controls with current state
+            updateControlsFromState();
+            updateSlideFromControls();
+        }
+
+        // Sync inputs with state values
+        function updateControlsFromState() {
+            if (document.getElementById('ctrl-layout')) document.getElementById('ctrl-layout').value = slideState.layout;
+            if (document.getElementById('ctrl-contrast')) document.getElementById('ctrl-contrast').value = slideState.contrastColor;
+            if (document.getElementById('ctrl-fontsize')) document.getElementById('ctrl-fontsize').value = slideState.fontSize;
+            
+            if (document.getElementById('ctrl-title-text')) document.getElementById('ctrl-title-text').value = slideState.titleText;
+            if (document.getElementById('ctrl-wordart')) document.getElementById('ctrl-wordart').value = slideState.wordArtStyle;
+            if (document.getElementById('ctrl-align')) document.getElementById('ctrl-align').value = slideState.textAlign;
+
+            if (document.getElementById('ctrl-shape')) document.getElementById('ctrl-shape').value = slideState.shapeType;
+            if (document.getElementById('ctrl-shape-fill')) document.getElementById('ctrl-shape-fill').value = slideState.shapeFill;
+            if (document.getElementById('ctrl-shape-scale')) document.getElementById('ctrl-shape-scale').value = slideState.shapeScale;
+
+            if (document.getElementById('ctrl-anim')) document.getElementById('ctrl-anim').value = slideState.animType;
+            if (document.getElementById('ctrl-transition')) document.getElementById('ctrl-transition').value = slideState.transitionType;
+        }
+
+        // Read UI inputs & re-render preview slide
+        function updateSlideFromControls() {
+            // Read inputs
+            if (document.getElementById('ctrl-layout')) slideState.layout = document.getElementById('ctrl-layout').value;
+            if (document.getElementById('ctrl-contrast')) slideState.contrastColor = document.getElementById('ctrl-contrast').value;
+            if (document.getElementById('ctrl-fontsize')) slideState.fontSize = document.getElementById('ctrl-fontsize').value;
+
+            if (document.getElementById('ctrl-title-text')) slideState.titleText = document.getElementById('ctrl-title-text').value;
+            if (document.getElementById('ctrl-wordart')) slideState.wordArtStyle = document.getElementById('ctrl-wordart').value;
+            if (document.getElementById('ctrl-align')) slideState.textAlign = document.getElementById('ctrl-align').value;
+
+            if (document.getElementById('ctrl-shape')) slideState.shapeType = document.getElementById('ctrl-shape').value;
+            if (document.getElementById('ctrl-shape-fill')) slideState.shapeFill = document.getElementById('ctrl-shape-fill').value;
+            if (document.getElementById('ctrl-shape-scale')) slideState.shapeScale = parseFloat(document.getElementById('ctrl-shape-scale').value);
+
+            if (document.getElementById('ctrl-anim')) slideState.animType = document.getElementById('ctrl-anim').value;
+            if (document.getElementById('ctrl-transition')) slideState.transitionType = document.getElementById('ctrl-transition').value;
+
+            // Render Preview Elements
+            const slide = document.getElementById('ppt-slide');
+            const titleEl = document.getElementById('slide-title');
+            const textEl = document.getElementById('slide-text');
+            const shapeBox = document.getElementById('slide-shape-container');
+            const animBadge = document.getElementById('anim-badge');
+            const animName = document.getElementById('anim-name');
+
+            // 1. Layout & Text content visibility
+            if (slideState.layout === 'empty') {
+                titleEl.parentElement.style.display = 'none';
+                textEl.style.display = 'none';
+            } else if (slideState.layout === 'title-only') {
+                titleEl.parentElement.style.display = 'block';
+                textEl.style.display = 'none';
+            } else { // title-body
+                titleEl.parentElement.style.display = 'block';
+                textEl.style.display = 'block';
+                textEl.innerText = "Запрошуємо всіх учнів та вчителів на щорічне свято творчості! Початок о 14:00 у актовій залі. 🎭🎶";
+            }
+
+            // 2. Title Text & WordArt
+            titleEl.innerText = slideState.titleText || "ШКІЛЬНИЙ ФЕСТИВАЛЬ";
+            
+            // Text alignment
+            titleEl.style.textAlign = slideState.textAlign;
+            textEl.style.textAlign = slideState.textAlign;
+
+            // Font size
+            if (slideState.fontSize === '14') titleEl.className = "font-bold text-sm transition-all";
+            else if (slideState.fontSize === '24') titleEl.className = "font-extrabold text-xl md:text-2xl transition-all";
+            else if (slideState.fontSize === '36') titleEl.className = "font-black text-2xl md:text-3xl transition-all";
+
+            // Contrast & Color / WordArt
+            if (slideState.wordArtStyle === 'neon-pink') {
+                titleEl.className += " text-pink-400 drop-shadow-[0_0_12px_rgba(244,63,94,0.9)] font-comfortaa";
+            } else if (slideState.wordArtStyle === 'gold-3d') {
+                titleEl.className += " text-yellow-300 drop-shadow-[2px_4px_0px_rgba(180,83,9,1)] font-black tracking-wider";
+            } else {
+                // Color fallback
+                if (slideState.contrastColor === 'slate-600') titleEl.style.color = "#475569";
+                else if (slideState.contrastColor === 'yellow-300') titleEl.style.color = "#fde047";
+                else if (slideState.contrastColor === 'pink-400') titleEl.style.color = "#f472b6";
+            }
+
+            // 3. Shape container rendering
+            if (slideState.shapeType === 'none') {
+                shapeBox.innerHTML = '';
+            } else {
+                let shapeIcon = '⭐';
+                if (slideState.shapeType === 'sun') shapeIcon = '☀️';
+                if (slideState.shapeType === 'heart') shapeIcon = '❤️';
+
+                shapeBox.innerHTML = `
+                    <div class="${slideState.shapeFill} text-white font-black text-3xl p-4 rounded-2xl shadow-xl flex items-center justify-center transition-all border-2 border-white"
+                         style="transform: scale(${slideState.shapeScale});">
+                        ${shapeIcon}
+                    </div>
+                `;
+            }
+
+            // 4. Animations & Transitions simulation
+            if (slideState.animType !== 'none') {
+                animBadge.classList.remove('hidden');
+                animName.innerText = slideState.animType === 'bounce' ? 'Стрибок 🪀' : 'Поява ✨';
+                
+                if (slideState.animType === 'bounce') {
+                    titleEl.classList.add('animate-bounce');
+                } else {
+                    titleEl.classList.remove('animate-bounce');
+                    titleEl.classList.add('animate-fadeIn');
+                }
+            } else {
+                animBadge.classList.add('hidden');
+                titleEl.classList.remove('animate-bounce', 'animate-fadeIn');
+            }
+
+            // Slide Transition simulation
+            if (slideState.transitionType === 'fade') {
+                slide.className = "w-full h-full relative p-6 flex flex-col justify-between items-center text-center overflow-hidden bg-slate-900 slide-transition-fade opacity-100";
+            } else if (slideState.transitionType === 'zoom') {
+                slide.className = "w-full h-full relative p-6 flex flex-col justify-between items-center text-center overflow-hidden bg-slate-900 slide-transition-zoom";
+            }
+        }
+
+        // Validate Task for current mission
+        function checkTask() {
+            let isPassed = false;
+            let errorMsg = "";
+
+            if (currentMission === 1) {
+                // Requirements: layout title-body, font 24 or 36, contrast yellow or pink
+                if (slideState.layout === 'title-body' &&
+                    (slideState.fontSize === '24' || slideState.fontSize === '36') &&
+                    (slideState.contrastColor === 'yellow-300' || slideState.contrastColor === 'pink-400')) {
+                    isPassed = true;
+                } else {
+                    errorMsg = "Зверни увагу на підказку! Макет має бути 'Назва та вміст', шрифт >=24pt, а колір тексту — яскравий контрастний!";
+                }
+            } 
+            else if (currentMission === 2) {
+                // Requirements: wordArt != none, align center
+                if (slideState.wordArtStyle !== 'none' && slideState.textAlign === 'center') {
+                    isPassed = true;
+                } else {
+                    errorMsg = "Будь уважним! Застосуй один зі стилів WordArt та зроби вирівнювання заголовка 'По центру'!";
+                }
+            } 
+            else if (currentMission === 3) {
+                // Requirements: shapeType != none, scale >= 1.2
+                if (slideState.shapeType !== 'none' && slideState.shapeScale >= 1.2) {
+                    isPassed = true;
+                } else {
+                    errorMsg = "Не забудь вставити фігуру (Зірка/Сонце/Серце) та пропорційно збільшити її за допомогою кутового маркера!";
+                }
+            } 
+            else if (currentMission === 4) {
+                // Requirements: animType != none, transitionType != none
+                if (slideState.animType !== 'none' && slideState.transitionType !== 'none') {
+                    isPassed = true;
+                } else {
+                    errorMsg = "Обери доцільну анімацію для об'єкта та встанови плавний перехід між слайдами!";
+                }
+            }
+
+            // Show Result Modal
+            if (isPassed) {
+                completedMissions[currentMission - 1] = true;
+                
+                // Update Progress dots
+                document.getElementById(`dot-${currentMission}`).className = "w-4 h-4 rounded-full bg-green-400 border-2 border-white";
+
+                // Enable next thumbnail button
+                if (currentMission < 4) {
+                    const nextBtn = document.getElementById(`thumb-${currentMission + 1}`);
+                    nextBtn.disabled = false;
+                    nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+
+                showModal(
+                    "🎉 ЧУДОВА РОБОТА!",
+                    `Ти успішно пройшов(ла) Місію ${currentMission}! Презентація стала набагато якіснішою та красивішою! ✨`,
+                    currentMission === 4 ? "ОТРИМАТИ СЕРТИФІКАТ 🏆" : "НАСТУПНА МІСІЯ 🚀"
+                );
+            } else {
+                showModal("💡 ПОТРІБНО ПІДКОРИГУВАТИ!", errorMsg, "СПРОБУВАТИ ЗНОВУ 🔄", "❌");
+            }
+        }
+
+        // Modal Display logic
+        function showModal(title, msg, btnText, icon = "🎉") {
+            document.getElementById('modal-icon').innerText = icon;
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-msg').innerText = msg;
+            document.getElementById('modal-btn').innerText = btnText;
+            document.getElementById('feedback-modal').classList.remove('hidden');
+            document.getElementById('feedback-modal').classList.add('flex');
+        }
+
+        function closeModal() {
+            document.getElementById('feedback-modal').classList.add('hidden');
+            document.getElementById('feedback-modal').classList.remove('flex');
+
+            // If last mission completed -> Open Certificate
+            if (completedMissions.every(m => m === true)) {
+                openCertificate();
+            } else if (completedMissions[currentMission - 1] && currentMission < 4) {
+                setMission(currentMission + 1);
+            }
+        }
+
+        // Certificate Open & Print functions
+        function openCertificate() {
+            document.getElementById('certificate-modal').classList.remove('hidden');
+            document.getElementById('certificate-modal').classList.add('flex');
+        }
+
+        function closeCertificate() {
+            document.getElementById('certificate-modal').classList.add('hidden');
+            document.getElementById('certificate-modal').classList.remove('flex');
+        }
+
+        function updateCertName() {
+            const val = document.getElementById('student-name-input').value.trim();
+            document.getElementById('cert-printed-name').innerText = val.length > 0 ? val : "[Ваше Прізвище та Ім'я]";
+        }
+    </script>
+</body>
+</html>
